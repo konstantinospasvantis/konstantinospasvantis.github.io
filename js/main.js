@@ -23,6 +23,50 @@ navLink.forEach(n => n.addEventListener('click', linkAction))
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll('section[id]')
+// Function to start or stop snowfall
+function startOrStopSnowfall() {
+  const snowfallContainer = document.querySelector('.snowfall');
+
+  if (!snowfallActive) {
+    startSnowfall(snowfallContainer);
+  } else {
+    stopSnowfall(snowfallContainer);
+  }
+
+  snowfallActive = !snowfallActive;
+}
+
+// Function to start snowfall
+function startSnowfall(container) {
+  // Your existing startSnowfall logic here...
+
+  // Example: Creating a snowfall container
+  const snowfallContainer = document.createElement('div');
+  snowfallContainer.className = 'snowfall';
+
+  // Example: Creating snowflakes
+  for (let i = 0; i < 50; i++) {
+    const snowflake = document.createElement('div');
+    snowflake.className = 'snowflake';
+    snowflake.style.left = `${Math.random() * 100}vw`;
+    snowflake.style.animationDuration = `${Math.random() * 3 + 2}s`;
+    snowflake.style.animationDelay = `-${Math.random()}s`;
+
+    snowfallContainer.appendChild(snowflake);
+  }
+
+  // Example: Appending the snowfall container to the body
+  document.body.appendChild(snowfallContainer);
+}
+
+// Function to stop snowfall
+function stopSnowfall(container) {
+  // Your logic to stop the snowfall (remove the snowfall container)
+  container.remove();
+}
+
+
+
 
 function scrollActive(){
     const scrollY = window.pageYOffset
